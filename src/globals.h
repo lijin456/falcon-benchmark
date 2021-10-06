@@ -24,7 +24,7 @@
 #define RANDOM_COMPUTE 256	//Size of buffer for random elements
 #define STRING_BUFFER_SIZE 256
 #define PARALLEL true
-#define NO_CORES 8
+#define NO_CORES 4
 
 
 

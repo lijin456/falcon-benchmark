@@ -1772,13 +1772,14 @@ void debugDotProd()
 	// funcReconstruct(c, c_reconst, rows*columns, "c", true);
 
 	/****************************** smallType ***************************/
-	size_t size = 9; 
+	size_t size = 10;
 
 	RSSVectorSmallType a(size, make_pair(1,1)), 
 					   b(size, make_pair(1,1)), 
 					   c(size);
 
-	funcDotProduct(a, b, c, size);
+    for(int i = 0; i < 1000 ;i++)
+        funcDotProduct(a, b, c, size);
 }
 
 
@@ -1858,7 +1859,7 @@ void debugWrap()
 
 void debugReLUPrime()
 {
-	vector<myType> data_a = {1, 2, -1, -2, 3};
+	vector<myType> data_a = {1, 2, -1, -2, 3, 1, 2, -1, -2, 3};
 	size_t size = data_a.size();
 	RSSVectorMyType a(size);
 	RSSVectorSmallType b(size);
@@ -1866,7 +1867,8 @@ void debugReLUPrime()
 	vector<smallType> reconst_b(size);
 
 	funcGetShares(a, data_a);
-	funcRELUPrime(a, b, size);
+    for(int i = 0; i < 1000 ;i++)
+        funcRELUPrime(a, b, size);
 
 #if (!LOG_DEBUG)
 	funcReconstruct(a, reconst_a, size, "a", true);
@@ -1877,7 +1879,7 @@ void debugReLUPrime()
 
 void debugReLU()
 {
-	vector<myType> data_a {0,1,2,3,4,5,6,7};
+	vector<myType> data_a {0,1,2,3,4,5,6,7,9,8};
 	size_t size = data_a.size();
 	RSSVectorMyType a(size), b(size);
 	RSSVectorSmallType aPrime(size);
@@ -1890,7 +1892,8 @@ void debugReLU()
 		a[i].second = a[i].second << BIT_SIZE - 3;
 	}
 
-	funcRELU(a, aPrime, b, size);
+	for(int i = 0; i < 1000 ;i++)
+	    funcRELU(a, aPrime, b, size);
 
 #if (!LOG_DEBUG)
 	funcReconstruct(a, data_a, size, "a", true);
@@ -1986,7 +1989,8 @@ void debugSS()
 	funcGetShares(a, data);
 	funcGetShares(b, bits);
 
-	funcSelectShares(a, b, selection, size);
+    for(int i = 0; i < 1000 ;i++)
+        funcSelectShares(a, b, selection, size);
 
 #if (!LOG_DEBUG)
 	funcReconstruct(a, reconst, size, "a", true);
